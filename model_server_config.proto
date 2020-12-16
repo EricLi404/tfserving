@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+
+enum ModelType {
+  MODEL_TYPE_UNSPECIFIED = 0 [deprecated = true];
+  TENSORFLOW = 1 [deprecated = true];
+  OTHER = 2 [deprecated = true];
+};
+
+message ModelConfig {
+  string name = 1;
+  string base_path = 2;
+  ModelType model_type = 3 [deprecated = true];
+  string model_platform = 4;
+}
+
+message ModelConfigList {
+  repeated ModelConfig config = 1;
+}
+
+message ModelServerConfig {
+  ModelConfigList model_config_list = 1;
+}
